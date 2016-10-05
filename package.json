@@ -31,7 +31,7 @@
     "IOT",
     "Connected devices"
   ],
-  "license": "GPL-3.0",
+  "license": "MPL-2.0",
   "bugs": {
     "url": "https://github.com/fxbox/abigail-app/issues"
   },
