@@ -1,0 +1,38 @@
+{
+  "name": "abigail-app",
+  "version": "1.0.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.6.1"
+  },
+  "dependencies": {
+    "chrono-node": "^1.2.4",
+    "lodash": "^4.16.3",
+    "moment": "^2.15.1",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "react-router": "^2.8.1",
+    "twitter_cldr": "^2.1.1",
+    "webaudio-kws-node": "git+https://github.com/fxbox/webaudio-kws-node.git"
+  },
+  "scripts": {
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fxbox/abigail-app.git"
+  },
+  "keywords": [
+    "IOT",
+    "Connected devices"
+  ],
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/fxbox/abigail-app/issues"
+  },
+  "homepage": "https://fxbox.github.io/abigail-app"
+}

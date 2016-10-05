@@ -1,0 +1,120 @@
+@import 'FiraSans/font.css';
+@import 'views/user-login.css';
+@import 'views/reminders.css';
+@import 'views/edit-dialog.css';
+@import 'views/microphone.css';
+@import 'views/full-screen.css';
+@import 'views/toaster.css';
+
+/** General styles **/
+html {
+  width: 100%;
+  height: 100%;
+
+  font: 400 10px/10px 'Fira Sans', Arial, sans-serif;
+}
+
+body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+body,
+input,
+textarea,
+button,
+select {
+  font: 300 1.1rem/2.2rem 'Fira Sans', Arial, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+  font-weight: 300;
+}
+
+h1 {
+  width: 100%;
+  font-size: 3.2rem;
+}
+
+h2 {
+  padding: 1rem 3rem 0;
+  font-size: 2.6rem;
+}
+
+h3 {
+  font-size: 2.2rem;
+}
+
+h4 {
+  font-size: 1.4rem;
+}
+
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+input {
+  margin: 0;
+
+  border: 1px solid #808080;
+  border-radius: 0.3rem;
+  background: #fff;
+}
+
+button {
+  margin: 0;
+
+  border: 1px solid #808080;
+  border-radius: 0.3rem;
+
+  background: #fff;
+}
+
+/* App specific styles */
+.app-view-container {
+  overflow: auto;
+  height: 100%;
+  padding: 5rem 0 0;
+  background: #fff;
+  background: linear-gradient(#fff, hsla(178, 87%, 35%, 1)) fixed;
+}
+
+/* Small devices (landscape phones, 34em and up) */
+@media (min-width: 34em) {
+  html {
+    font: 400 11px/11px 'Fira Sans', Arial, sans-serif;
+  }
+}
+
+/* Medium devices (tablets, 48em and up) */
+@media (min-width: 48em) {
+  html {
+    font: 400 12px/12px 'Fira Sans', Arial, sans-serif;
+  }
+}
+
+/* Large devices (desktops, 62em and up) */
+@media (min-width: 62em) {
+  html {
+    font: 400 13px/13px 'Fira Sans', Arial, sans-serif;
+  }
+}
+
+/* Extra large devices (large desktops, 75em and up) */
+@media (min-width: 75em) {
+  html {
+    font: 400 14px/14px 'Fira Sans', Arial, sans-serif;
+  }
+}

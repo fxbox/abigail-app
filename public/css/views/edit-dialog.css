@@ -1,0 +1,93 @@
+.dialog-overlay {
+  position: absolute;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  opacity: 0.5;
+  background: #fff;
+}
+
+.dialog {
+  position: absolute;
+  z-index: 3;
+  top: 10rem;
+  left: calc((100vw - 30rem) / 2);
+  box-sizing: border-box;
+  width: 30rem;
+  padding: 3rem;
+  border: 0.1rem solid #ddd;
+  background: #fff;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+}
+
+.dialog-title {
+  margin: 0 0 1.5rem;
+}
+
+.dialog-title__close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  padding: 1rem;
+  opacity: 0.7;
+  font-size: 0;
+}
+
+.dialog-title__close::after {
+  position: absolute;
+  width: 2rem;
+  height: 2rem;
+  content: '';
+  background: url('../icons/close.svg');
+}
+
+.dialog-content {
+  margin: 0 0 2rem;
+}
+
+.dialog-content__section {
+  margin: 0 0 1rem;
+}
+
+.dialog-content__input {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0 0 0 0.5rem;
+  border: 0.1rem solid #ddd;
+  border-radius: 0;
+}
+
+textarea.dialog-content__input {
+  /* Remove the nasty few pixels at the bottom of <textarea/>. */
+  margin-bottom: -0.8rem;
+}
+
+.dialog-content__half {
+  width: calc(50% - 1rem / 2);
+  margin: 0 1rem 0 0;
+}
+
+.dialog-content__half:last-child {
+  margin: 0;
+}
+
+.dialog-buttons__save,
+.dialog-buttons__cancel {
+  margin: 0 2rem 0 0;
+  padding: 0.5rem 1.5rem;
+  color: #737373;
+  border: 0.1rem solid #ddd;
+  border-radius: 0;
+  background-color: #f5f5f5;
+  font-weight: 600;
+}
+
+.dialog-buttons__save {
+  color: #fff;
+  border: none;
+  background-color: #0ca8a4;
+}

@@ -1,0 +1,30 @@
+.user-login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  height: 100%;
+}
+
+.user-login__name-field {
+  width: 75vmax;
+  min-height: 5rem;
+
+  text-align: center;
+  border: none;
+  border-radius: 0;
+  font-size: 8rem;
+  font-variant: small-caps;
+}
+
+.user-login__login-button {
+  width: 20vmax;
+  height: 20vmax;
+
+  border: none;
+  background: transparent;
+}
+
+.user-login__login-button:disabled {
+  background: #c1d9d8;
+}
