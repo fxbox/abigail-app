@@ -19,7 +19,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "icons": "inkscape -e public/img/icons/128.png -w 128 public/img/icon.svg;inkscape -e public/img/icons/512.png -w 512 public/img/icon.svg;inkscape -e public/img/icons/60.png -w 60 public/img/icon.svg;inkscape -e public/img/icons/16.png -w 16 public/img/icon.svg;inkscape -e public/img/icons/32.png -w 32 public/img/icon.svg;inkscape -e public/img/icons/48.png -w 48 public/img/icon.svg;inkscape -e public/img/icons/64.png -w 64 public/img/icon.svg;inkscape -e public/img/icons/90.png -w 90 public/img/icon.svg;inkscape -e public/img/icons/144.png -w 144 public/img/icon.svg;inkscape -e public/img/icons/256.png -w 256 public/img/icon.svg;inkscape -e public/img/icons/336.png -w 336 public/img/icon.svg;inkscape -e public/favicon.ico -w 32 public/img/icon.svg"
   },
   "main": "index.js",
   "repository": {
