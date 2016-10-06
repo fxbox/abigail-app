@@ -1,4 +1,4 @@
-# ![Project Abigail app](https://raw.githubusercontent.com/fxbox/abigail-app/master/public/img/icons/32.png "Project Abigail app") Project Abigail app 📆
+# ![Project Abigail app](https://raw.githubusercontent.com/fxbox/abigail-app/master/public/img/icons/32.png "Project Abigail app") Project Abigail app 📆 [![Build Status](https://travis-ci.org/fxbox/abigail-app.svg?branch=master)](https://travis-ci.org/fxbox/abigail-app)
 
 ## How to develop?
 
