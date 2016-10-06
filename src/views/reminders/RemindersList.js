@@ -53,6 +53,10 @@ class RemindersList extends Component {
   render() {
     let reminders = this.state.reminders;
 
+    if (!reminders) {
+      return null;
+    }
+
     // Sort all the reminders chronologically.
     reminders = reminders.sort((a, b) => {
       return a.due - b.due;
@@ -123,7 +127,7 @@ class RemindersList extends Component {
 RemindersList.propTypes = {
   server: React.PropTypes.object.isRequired,
   analytics: React.PropTypes.object.isRequired,
-  reminders: React.PropTypes.array.isRequired,
+  reminders: React.PropTypes.array,
   refreshReminders: React.PropTypes.func.isRequired,
 };
 

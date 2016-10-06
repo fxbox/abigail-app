@@ -12,7 +12,7 @@ class Microphone extends Component {
     this.server = props.server;
     this.analytics = props.analytics;
 
-    this.audioCtx = new window.AudioContext();
+    this.audioCtx = 'AudioContext' in window ? new window.AudioContext() : null;
     this.audioBuffer = null;
     this.bufferSource = null;
     this.timeout = null;
@@ -46,6 +46,10 @@ class Microphone extends Component {
         return res.arrayBuffer();
       })
       .then((arrayBuffer) => {
+        if (!this.audioCtx) {
+          throw new Error('Web Audio API is not supported.');
+        }
+
         this.audioCtx.decodeAudioData(arrayBuffer, (buffer) => {
           this.audioBuffer = buffer;
         }, (err) => {
@@ -55,7 +59,7 @@ class Microphone extends Component {
   }
 
   playBleep() {
-    if (!this.audioBuffer) {
+    if (!this.audioBuffer || !this.audioCtx) {
       return;
     }
 

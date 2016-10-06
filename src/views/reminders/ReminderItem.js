@@ -20,8 +20,15 @@ class ReminderItem extends Component {
   constructor(props) {
     super(props);
 
-    TwitterCldr.set_data(TwitterCldrDataBundle);
-    this.listFormatter = new TwitterCldr.ListFormatter();
+    if (typeof TwitterCldr !== 'undefined') {
+      TwitterCldr.set_data(TwitterCldrDataBundle);
+      this.listFormatter = new TwitterCldr.ListFormatter();
+    } else {
+      this.listFormatter = {
+        format: (a) => a.join(' and ')
+      };
+    }
+
     this.reminder = props.reminder;
     this.onDelete = props.onDelete;
     this.onEdit = props.onEdit;
@@ -46,7 +53,7 @@ class ReminderItem extends Component {
 
   render() {
     const reminder = this.reminder;
-    const recipients = this.listFormatter.format(reminder.recipients);
+    const recipients = this.listFormatter.format(reminder.recipients || []);
     const contentClassName = [
       'reminders__item-content',
       this.getColour(recipients),

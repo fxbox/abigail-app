@@ -32,10 +32,7 @@ class Reminders extends Component {
   }
 
   componentDidMount() {
-    this.refreshReminders()
-      .then(() => {
-        console.log('Reminders loaded');
-      });
+    this.refreshReminders();
 
     // Refresh the page every 10 seconds if idle.
     this.refreshInterval = setInterval(() => {
