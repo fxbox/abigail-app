@@ -204,12 +204,10 @@ class Reminders extends Component {
     return (
       <section className="reminders">
         <Toaster ref={(t) => this.toaster = t}/>
-        <div className="microphone">
-          <Microphone ref={(t) => this.microphone = t}
-                      speechController={this.speechController}
-                      server={this.server}
-                      analytics={this.analytics}/>
-        </div>
+        <Microphone ref={(t) => this.microphone = t}
+                    speechController={this.speechController}
+                    server={this.server}
+                    analytics={this.analytics}/>
         <RemindersList reminders={this.state.reminders}
                        server={this.server}
                        analytics={this.analytics}

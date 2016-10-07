@@ -4,7 +4,11 @@ class Microphone extends Component {
   constructor(props) {
     super(props);
 
+    const WEBSPEECHAPI_SUPPORT = 'SpeechRecognition' in window ||
+      'webkitSpeechRecognition' in window;
+
     this.state = {
+      webSpeechAPISupport: WEBSPEECHAPI_SUPPORT,
       isListeningToSpeech: false,
     };
 
@@ -109,18 +113,20 @@ class Microphone extends Component {
   }
 
   render() {
-    if (!this.server.isLoggedIn) {
+    if (!this.server.isLoggedIn || !this.state.webSpeechAPISupport) {
       return null;
     }
 
-    const className = this.state.isListeningToSpeech ? 'listening' : '';
+    const className = this.state.isListeningToSpeech ? 'listening' : null;
 
     return (
-      <div className={className} onClick={this.onClickMic}>
-        <div className="microphone__background"></div>
-        <img className="microphone__icon"
-             src={`${process.env.PUBLIC_URL}/css/icons/microphone.svg`}
-             role="presentation"/>
+      <div className="microphone">
+        <div className={className} onClick={this.onClickMic}>
+          <div className="microphone__background"></div>
+          <img className="microphone__icon"
+               src={`${process.env.PUBLIC_URL}/css/icons/microphone.svg`}
+               role="presentation"/>
+        </div>
       </div>
     );
   }
