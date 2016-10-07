@@ -3,7 +3,7 @@
 ## Where to start?
 
 If you're new to the Project Abigail app and want to contribute, there is a
-[list of good first bugs](https://github.com/fxbox/abigail-app/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+bug%22).
+[list of good first bugs](https://github.com/project-abigail/app/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+bug%22).
 
 ## Coding standard
 

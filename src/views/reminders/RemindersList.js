@@ -34,7 +34,6 @@ class RemindersList extends Component {
 
   onDelete(id) {
     // @todo Nice to have: optimistic update.
-    // https://github.com/fxbox/calendar/issues/32
     this.server.reminders.delete(id)
       .then(() => {
         this.analytics.event('reminders', 'delete');

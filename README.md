@@ -1,4 +1,4 @@
-# 📆 Project Abigail app [![Build Status](https://travis-ci.org/fxbox/abigail-app.svg?branch=master)](https://travis-ci.org/fxbox/abigail-app)
+# 📆 Project Abigail app [![Build Status](https://travis-ci.org/project-abigail/app.svg?branch=master)](https://travis-ci.org/project-abigail/app)
 
 ## How to develop?
 

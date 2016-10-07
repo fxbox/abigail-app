@@ -25,7 +25,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fxbox/abigail-app.git"
+    "url": "git+https://github.com/project-abigail/app.git"
   },
   "keywords": [
     "IOT",
@@ -33,7 +33,7 @@
   ],
   "license": "MPL-2.0",
   "bugs": {
-    "url": "https://github.com/fxbox/abigail-app/issues"
+    "url": "https://github.com/project-abigail/app/issues"
   },
-  "homepage": "https://fxbox.github.io/abigail-app"
+  "homepage": "https://project-abigail.github.io/app"
 }

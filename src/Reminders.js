@@ -112,7 +112,6 @@ class Reminders extends Component {
 
   onReminder({ recipients, action, due, confirmation }) {
     // @todo Nice to have: optimistic update.
-    // https://github.com/fxbox/calendar/issues/32
     this.server.reminders
       .set({
         recipients,
@@ -199,7 +198,6 @@ class Reminders extends Component {
   }
 
   // @todo Add a different view when there's no reminders:
-  // https://github.com/fxbox/calendar/issues/16
   render() {
     return (
       <section className="reminders">
