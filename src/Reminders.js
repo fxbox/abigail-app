@@ -5,6 +5,8 @@ import Toaster from './views/Toaster';
 import Microphone from './views/Microphone';
 import RemindersList from './views/reminders/RemindersList';
 
+import './Reminders.css';
+
 class Reminders extends Component {
   constructor(props) {
     super(props);

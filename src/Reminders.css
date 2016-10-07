@@ -148,18 +148,18 @@
   height: 2rem;
   border: none;
   outline: none;
-  background: url('../icons/delete.svg');
+  background: url('./icons/delete.svg');
   font-size: 0;
 }
 
 .reminders__delete {
   right: 1rem;
-  background: url('../icons/delete.svg');
+  background: url('./icons/delete.svg');
 }
 
 .reminders__edit {
   right: 4rem;
-  background: url('../icons/edit.svg');
+  background: url('./icons/edit.svg');
 }
 
 /* Small devices (landscape phones, 34em and up) */

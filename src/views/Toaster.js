@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './Toaster.css';
+
 const TYPES = [
   'success',
   'info',

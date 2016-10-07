@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import history from 'react-router/lib/hashHistory'
 
+import './Login.css';
+import loginImage from './icons/next.svg';
+
 class Login extends Component {
   constructor(props = {}) {
     super(props);
@@ -37,7 +40,7 @@ class Login extends Component {
                className="user-login__name-field"
                onChange={this.onChange}/>
         <button className="user-login__login-button">
-          <img src={`${process.env.PUBLIC_URL}/css/icons/next.svg`}
+          <img src={loginImage}
                role="presentation"/>
         </button>
       </form>

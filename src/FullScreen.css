@@ -14,7 +14,7 @@
   border: none;
   border-radius: 0;
   outline: none;
-  background: url('../icons/full-screen.svg');
+  background: url('./icons/full-screen.svg');
   background-size: 2rem 2rem;
   font-size: 0;
 }

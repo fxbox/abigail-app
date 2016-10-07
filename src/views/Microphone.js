@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 
+import './Microphone.css';
+import microphoneImage from '../icons/microphone.svg';
+
 class Microphone extends Component {
   constructor(props) {
     super(props);
@@ -124,7 +127,7 @@ class Microphone extends Component {
         <div className={className} onClick={this.onClickMic}>
           <div className="microphone__background"></div>
           <img className="microphone__icon"
-               src={`${process.env.PUBLIC_URL}/css/icons/microphone.svg`}
+               src={microphoneImage}
                role="presentation"/>
         </div>
       </div>

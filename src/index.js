@@ -15,6 +15,8 @@ import Settings from './lib/common/settings';
 import Analytics from './lib/analytics';
 import Server from './lib/server/index';
 
+import './index.css';
+
 const speechController = new SpeechController();
 const settings = new Settings();
 const analytics = new Analytics({ settings });

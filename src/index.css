@@ -1,11 +1,3 @@
-@import 'FiraSans/font.css';
-@import 'views/user-login.css';
-@import 'views/reminders.css';
-@import 'views/edit-dialog.css';
-@import 'views/microphone.css';
-@import 'views/full-screen.css';
-@import 'views/toaster.css';
-
 /** General styles **/
 html {
   width: 100%;

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import './EditDialog.css';
+
 class EditDialog extends Component {
   constructor(props) {
     super(props);

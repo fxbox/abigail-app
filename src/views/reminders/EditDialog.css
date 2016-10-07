@@ -42,7 +42,7 @@
   width: 2rem;
   height: 2rem;
   content: '';
-  background: url('../icons/close.svg');
+  background: url('../../icons/close.svg');
 }
 
 .dialog-content {

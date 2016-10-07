@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+import './FullScreen.css';
+
 class FullScreen extends Component {
   constructor(props) {
     super(props);
