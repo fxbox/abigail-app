@@ -13,8 +13,7 @@
     "react": "^15.3.2",
     "react-dom": "^15.3.2",
     "react-router": "^2.8.1",
-    "twitter_cldr": "^2.1.1",
-    "webaudio-kws-node": "git+https://github.com/fxbox/webaudio-kws-node.git"
+    "twitter_cldr": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",

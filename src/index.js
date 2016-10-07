@@ -23,11 +23,6 @@ const options = {
   speechController, server, settings, analytics,
 };
 
-speechController.start()
-  .then(() => {
-    console.log('Speech controller started');
-  });
-
 const subscribeToNotifications = () => {
   server.subscribeToNotifications()
     .catch((err) => {

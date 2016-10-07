@@ -21,7 +21,6 @@ class Reminders extends Component {
     this.toaster = null;
     this.microphone = null;
     this.debugEvent = this.debugEvent.bind(this);
-    this.onWakeWord = this.onWakeWord.bind(this);
     this.onVoiceCommand = this.onVoiceCommand.bind(this);
     this.onParsingFailure = this.onParsingFailure.bind(this);
     this.onWebPushMessage = this.onWebPushMessage.bind(this);
@@ -42,14 +41,10 @@ class Reminders extends Component {
         });
     }, 10 * 1000);
 
-    this.speechController.on('wakelistenstart', this.debugEvent);
-    this.speechController.on('wakelistenstop', this.debugEvent);
-    this.speechController.on('wakeheard', this.debugEvent);
     this.speechController.on('speechrecognitionstart', this.debugEvent);
     this.speechController.on('speechrecognitionstop', this.debugEvent);
     this.speechController.on('reminder', this.debugEvent);
 
-    this.speechController.on('wakeheard', this.onWakeWord);
     this.speechController.on('reminder', this.onVoiceCommand);
     this.speechController.on('parsing-failed', this.onParsingFailure);
     this.server.on('push-message', this.onWebPushMessage);
@@ -58,14 +53,10 @@ class Reminders extends Component {
   componentWillUnmount() {
     clearInterval(this.refreshInterval);
 
-    this.speechController.off('wakelistenstart', this.debugEvent);
-    this.speechController.off('wakelistenstop', this.debugEvent);
-    this.speechController.off('wakeheard', this.debugEvent);
     this.speechController.off('speechrecognitionstart', this.debugEvent);
     this.speechController.off('speechrecognitionstop', this.debugEvent);
     this.speechController.off('reminder', this.debugEvent);
 
-    this.speechController.off('wakeheard', this.onWakeWord);
     this.speechController.off('reminder', this.onVoiceCommand);
     this.speechController.off('parsing-failed', this.onParsingFailure);
     this.server.off('push-message', this.onWebPushMessage);
@@ -95,12 +86,6 @@ class Reminders extends Component {
     this.setState({ reminders });
   }
 
-  onWakeWord() {
-    this.analytics.event('wakeword', 'recognised');
-
-    this.microphone.startListeningToSpeech();
-  }
-
   onVoiceCommand({ result }) {
     this.microphone.stopListeningToSpeech();
 
@@ -119,7 +104,6 @@ class Reminders extends Component {
         this.speechController.speak(message)
           .then(() => {
             this.toaster.hide();
-            this.speechController.startListeningForWakeword();
           });
         break;
       }
@@ -145,7 +129,6 @@ class Reminders extends Component {
           .then(() => {
             console.log('Utterance terminated.');
             this.toaster.hide();
-            this.speechController.startListeningForWakeword();
           });
       })
       .catch((res) => {
@@ -159,7 +142,6 @@ class Reminders extends Component {
         this.speechController.speak(message)
           .then(() => {
             this.toaster.hide();
-            this.speechController.startListeningForWakeword();
           });
       });
   }
@@ -188,7 +170,6 @@ class Reminders extends Component {
       .then(() => {
         console.log('Utterance terminated.');
         this.toaster.hide();
-        this.speechController.startListeningForWakeword();
       });
   }
 
@@ -203,7 +184,6 @@ class Reminders extends Component {
       .then(() => {
         console.log('Utterance terminated.');
         this.toaster.hide();
-        this.speechController.startListeningForWakeword();
       });
   }
 

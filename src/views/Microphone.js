@@ -25,13 +25,11 @@ class Microphone extends Component {
   componentDidMount() {
     this.loadAudio();
 
-    //this.speechController.on('wakeheard', this.startListeningToSpeech);
     this.speechController.on('speechrecognitionstop',
       this.stopListeningToSpeech);
   }
 
   componentWillUnmount() {
-    //this.speechController.off('wakeheard', this.startListeningToSpeech);
     this.speechController.off('speechrecognitionstop',
       this.stopListeningToSpeech);
   }
