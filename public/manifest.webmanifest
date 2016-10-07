@@ -6,7 +6,7 @@
   "start_url": "/abigail-app/index.html?utm_source=web_app_manifest&utm_medium=manifest&utm_campaign=web_app",
   "orientation": "landscape",
   "display": "standalone",
-  "theme_color": "#0ca8a4",
+  "theme_color": "#6f45c9",
   "background_color": "#fff",
   "icons": [
     {

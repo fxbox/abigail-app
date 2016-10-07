@@ -19,7 +19,7 @@
   transition: cubic-bezier(0.5, -0.5, 0.5, 1.5) 300ms;
   transform: scale(0);
   border-radius: 100%;
-  background: #0ca8a4;
+  background: #6f45c9;
 }
 
 .listening .microphone__background {

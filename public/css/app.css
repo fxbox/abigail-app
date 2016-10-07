@@ -88,7 +88,7 @@ button {
   height: 100%;
   padding: 5rem 0 0;
   background: #fff;
-  background: linear-gradient(#fff, hsla(178, 87%, 35%, 1)) fixed;
+  background: linear-gradient(#fff, #6f45c9) fixed;
 }
 
 /* Small devices (landscape phones, 34em and up) */
