@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
-import _ from 'lodash';
+import groupBy from 'lodash/groupBy';
 import moment from 'moment';
 
-/*import ReminderItem from './ReminderItem';
-import EditDialog from './EditDialog';*/
 import ReminderItem from './ReminderItem';
 import EditDialog from './EditDialog';
 
@@ -62,13 +60,13 @@ class RemindersList extends Component {
     });
 
     // Group the reminders by month.
-    reminders = _.groupBy(reminders, (reminder) => {
+    reminders = groupBy(reminders, (reminder) => {
       return moment(reminder.due).format('YYYY/MM');
     });
 
     // For each month, group the reminders by day.
     Object.keys(reminders).forEach((month) => {
-      reminders[month] = _.groupBy(reminders[month], (reminder) => {
+      reminders[month] = groupBy(reminders[month], (reminder) => {
         return moment(reminder.due).format('YYYY/MM/DD');
       });
     });
