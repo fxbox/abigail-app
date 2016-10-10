@@ -20,7 +20,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
-    "icons": "inkscape -e public/favicon.ico -w 32 public/img/icon.svg;inkscape -e public/img/icons/192.png -w 192 public/img/icon.svg;inkscape -e public/img/icons/512.png -w 512 public/img/icon.svg;"
+    "icons": "inkscape -e public/favicon.ico -w 32 public/img/icon.svg;inkscape -e public/img/icons/192.png -w 192 public/img/icon.svg;inkscape -e public/img/icons/512.png -w 512 public/img/icon.svg;inkscape -e public/img/icons/apple-touch-icon.png -w 180 -b white -a -64:-64:576:576 public/img/icon.svg;"
   },
   "main": "index.js",
   "repository": {
