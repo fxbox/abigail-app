@@ -1,6 +1,7 @@
 {
   "name": "abigail-app",
   "version": "1.0.0",
+  "description": "Web app for Project Abigail.",
   "private": true,
   "devDependencies": {
     "react-scripts": "0.6.1"
