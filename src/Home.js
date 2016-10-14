@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import Component from 'react/lib/ReactComponent';
 import history from 'react-router/lib/hashHistory'
 
 class Home extends Component {
