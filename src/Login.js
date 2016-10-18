@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import history from 'react-router/lib/hashHistory'
 
+import Toaster from './views/Toaster';
+
 import './Login.css';
 import loginImage from './icons/next.svg';
 
@@ -9,36 +11,81 @@ class Login extends Component {
     super(props);
 
     this.state = {
-      login: 'mozilla',
+      login: '', // A phone number
+      password: '',
+
+      cursor: 0, // The position of the caret in the input field.
     };
 
     this.server = props.route.server;
     this.analytics = props.route.analytics;
 
+    this.loginField = null;
+    this.toaster = null;
+    this.toasterTimeout = null;
+
     this.onChange = this.onChange.bind(this);
+    this.onChangePassword = this.onChangePassword.bind(this);
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  onChange(evt) {
-    const login = evt.target.value;
-    this.setState({ login });
+  componentDidUpdate() {
+    this.loginField.selectionStart = this.state.cursor;
+    this.loginField.selectionEnd = this.state.cursor;
   }
 
-  onFormSubmit() {
-    this.server.login(this.state.login, 'password')
+  onChange(evt) {
+    const login = this.cleanPhoneNumber(evt.target.value);
+    const cursor = this.loginField.selectionStart;
+    this.setState({ login, cursor });
+  }
+
+  onChangePassword(evt) {
+    const password = evt.target.value;
+    this.setState({ password });
+  }
+
+  cleanPhoneNumber(string = '') {
+    return string
+      .replace(/\+1/g, '') // Remove the country code.
+      .replace(/\D+/g, '') // Remove non numeric characters.
+      .substring(0, 10);
+  }
+
+  onFormSubmit(evt) {
+    evt.preventDefault(); // Avoid redirection to /?.
+
+    this.server.login(this.state.login, this.state.password)
       .then(() => {
         this.analytics.event('user', 'login');
         history.push('reminders');
+      })
+      .catch((err) => {
+        if (err.statusCode === 401) {
+          this.toaster.danger(`The phone number and the password don't match.`);
+
+          clearTimeout(this.toasterTimeout);
+          this.toasterTimeout = setTimeout(() => {
+            this.toaster.hide();
+          }, 5000);
+        }
       });
   }
 
   render() {
     return (
       <form className="user-login" onSubmit={this.onFormSubmit}>
+        <Toaster ref={(t) => this.toaster = t}/>
+        <h1 className="user-login__header">Project Abigail</h1>
         <input value={this.state.login}
-               placeholder="Family name"
+               placeholder="Phone number"
                className="user-login__name-field"
+               ref={(t) => this.loginField = t}
                onChange={this.onChange}/>
+        <input type="password"
+               value={this.state.password}
+               className="user-login__password-field"
+               onChange={this.onChangePassword}/>
         <button className="user-login__login-button">
           <img src={loginImage}
                role="presentation"/>

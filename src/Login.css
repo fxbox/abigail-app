@@ -4,22 +4,29 @@
   align-items: center;
   justify-content: space-around;
   height: 100%;
+  text-align: center;
 }
 
-.user-login__name-field {
+.user-login__header {
+  font-size: 6rem;
+  line-height: 10rem;
+}
+
+.user-login__name-field,
+.user-login__password-field {
   width: 75vmax;
   min-height: 5rem;
 
   text-align: center;
   border: none;
   border-radius: 0;
-  font-size: 8rem;
+  font-size: 6rem;
   font-variant: small-caps;
 }
 
 .user-login__login-button {
-  width: 20vmax;
-  height: 20vmax;
+  width: 10rem;
+  height: 10rem;
 
   border: none;
   background: transparent;

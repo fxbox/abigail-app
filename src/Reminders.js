@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import history from 'react-router/lib/hashHistory'
 import moment from 'moment';
 
 import Toaster from './views/Toaster';
@@ -30,6 +31,18 @@ class Reminders extends Component {
     this.addReminder = this.addReminder.bind(this);
 
     moment.locale(navigator.languages || navigator.language || 'en-US');
+  }
+
+  componentWillMount() {
+    if (!window.sessionStorage) {
+      // The following code won't work under Node.js.
+      return;
+    }
+
+    // Redirect to login if the user is not logged yet.
+    if (!this.server || !this.server.isLoggedIn) {
+      history.push('login');
+    }
   }
 
   componentDidMount() {

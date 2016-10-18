@@ -10,7 +10,7 @@ const ORIGIN = 'https://calendar.knilxof.org';
  * @type {number}
  * @const
  */
-const API_VERSION = 1;
+const API_VERSION = 2;
 
 /**
  * Regex to match upper case literals.
@@ -199,7 +199,7 @@ export default class Settings extends EventDispatcher {
    * @private
    */
   [p.onStorage](evt) {
-    if (!evt.key.startsWith(PREFIX)) {
+    if (!evt.key || !evt.key.startsWith(PREFIX)) {
       return;
     }
 

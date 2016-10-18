@@ -49,12 +49,12 @@ export default class Server extends EventDispatcher {
   /**
    * Authenticate a user.
    *
-   * @param {string} user
+   * @param {string} username
    * @param {string} password
    * @return {Promise}
    */
-  login(user, password) {
-    return this[p.api].post('login', { user, password })
+  login(username, password) {
+    return this[p.api].post('login', { username, password })
       .then((res) => {
         this[p.settings].session = res.token;
         this.emit('login');

@@ -78,7 +78,7 @@ button {
 .app-view-container {
   overflow: auto;
   height: 100%;
-  padding: 5rem 0 0;
+  padding: 0;
   background: #fff;
   background: linear-gradient(#fff, #6f45c9) fixed;
 }
