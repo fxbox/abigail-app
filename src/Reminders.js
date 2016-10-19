@@ -40,7 +40,10 @@ class Reminders extends Component {
     }
 
     // Redirect to login if the user is not logged yet.
-    if (!this.server || !this.server.isLoggedIn) {
+    if (this.server && this.server.isLoggedIn) {
+      this.server.subscribeToNotifications();
+      this.server.reminders.init();
+    } else {
       history.push('login');
     }
   }

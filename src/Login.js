@@ -58,6 +58,7 @@ class Login extends Component {
     this.server.login(this.state.login, this.state.password)
       .then(() => {
         this.analytics.event('user', 'login');
+        this.server.subscribeToNotifications();
         history.push('reminders');
       })
       .catch((err) => {

@@ -12,9 +12,20 @@ export default class Reminders {
 
     this[p.userNamesToIdMap] = {};
     this[p.userIdToNamesMap] = {};
-    this.getAllUsersInGroup();
 
     Object.seal(this);
+  }
+
+  /**
+   * Method to be called when the user is logged in.
+   * @return {Promise}
+   */
+  init() {
+    if (Object.keys(this[p.userNamesToIdMap]).length) {
+      return Promise.resolve();
+    }
+
+    return this.getAllUsersInGroup();
   }
 
   /**
@@ -22,10 +33,6 @@ export default class Reminders {
    * This is used to map user names to their respective ids.
    */
   getAllUsersInGroup() {
-    if (Object.keys(this[p.userNamesToIdMap]).length) {
-      return;
-    }
-
     return Promise.all([
       this[p.api].get('users/myself'),
       this[p.api].get('users/myself/relations'),

@@ -25,14 +25,7 @@ const options = {
   speechController, server, settings, analytics,
 };
 
-const subscribeToNotifications = () => {
-  server.subscribeToNotifications()
-    .catch((err) => {
-      console.error('Error while subscribing to notifications:', err);
-    });
-};
-
-server.on('login', () => subscribeToNotifications());
+server.on('login', () => server.subscribeToNotifications());
 server.on('push-message', (message) => {
   if (settings.isHub) {
     speechController.speak(`${message.title}: ${message.body}`);

@@ -15,18 +15,11 @@ class Home extends Component {
     }
 
     if (this.server && this.server.isLoggedIn) {
-      this.subscribeToNotifications();
+      this.server.subscribeToNotifications();
       history.push('reminders');
     } else {
       history.push('login');
     }
-  }
-
-  subscribeToNotifications() {
-    this.server.subscribeToNotifications()
-      .catch((err) => {
-        console.error('Error while subscribing to notifications:', err);
-      });
   }
 
   render() {

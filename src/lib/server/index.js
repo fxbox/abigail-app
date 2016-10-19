@@ -79,12 +79,13 @@ export default class Server extends EventDispatcher {
    * @return {Promise}
    */
   subscribeToNotifications() {
-    if (!this.isLoggedIn) {
+    // We're commenting the web push for now as we're sending text messages.
+    /*if (!this.isLoggedIn) {
       return Promise.reject(new Error(
         'Error while subscribing to push notifications: user is not logged in'
       ));
     }
-    return this[p.webPush].subscribeToNotifications();
+    return this[p.webPush].subscribeToNotifications();*/
   }
 
   clearServiceWorker() {
