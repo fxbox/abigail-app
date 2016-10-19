@@ -139,6 +139,8 @@ class EditDialog extends Component {
       return null;
     }
 
+    const recipients = this.state.recipients.map((user) => user.forename);
+
     return (
       <div>
         <div className="dialog-overlay"
@@ -155,7 +157,7 @@ class EditDialog extends Component {
             <div className="dialog-content__section">
               <h4>Recipients</h4>
               <input className="dialog-content__input"
-                     value={this.state.recipients}
+                     value={recipients}
                      disabled/>
             </div>
             <div className="dialog-content__section">

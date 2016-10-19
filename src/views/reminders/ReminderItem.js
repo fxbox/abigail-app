@@ -53,7 +53,8 @@ class ReminderItem extends Component {
 
   render() {
     const reminder = this.reminder;
-    const recipients = this.listFormatter.format(reminder.recipients || []);
+    const users = (reminder.recipients || []).map((user) => user.forename);
+    const recipients = this.listFormatter.format(users);
     const contentClassName = [
       'reminders__item-content',
       this.getColour(recipients),
