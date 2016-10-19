@@ -34,7 +34,7 @@ class ReminderItem extends Component {
     this.onEdit = props.onEdit;
   }
 
-  getColour(name = '') {
+  getColour(forenames = '') {
     const hash = (string) => {
       let hash = 0, i, chr, len;
       if (string.length === 0) {
@@ -48,7 +48,7 @@ class ReminderItem extends Component {
       return hash;
     };
 
-    return COLOURS[hash(name) % COLOURS.length];
+    return COLOURS[hash(forenames) % COLOURS.length];
   }
 
   render() {

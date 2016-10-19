@@ -57,7 +57,7 @@ export default class Reminders {
     if (!users.length) {
       return [
         {
-          userId: 'myself',
+          id: 'myself',
           forename: 'Me',
         }
       ];
@@ -66,7 +66,7 @@ export default class Reminders {
     return users.map((user) => {
       if (user === 'me') {
         return {
-          userId: 'myself',
+          id: 'myself',
           forename: 'Me',
         };
       }
@@ -76,7 +76,7 @@ export default class Reminders {
       }
 
       return {
-        userId: this[p.userNamesToIdMap][user],
+        id: this[p.userNamesToIdMap][user],
         forename: user,
       };
     });
@@ -88,14 +88,7 @@ export default class Reminders {
    * @return {Promise<Array>} A promise that resolves with an array of objects.
    */
   getAll() {
-    return this[p.api].get('reminders')
-      .then((reminders) => {
-        reminders.forEach((reminder) => {
-          reminder.recipients = this.mapUsersToId(reminder.recipients);
-        });
-
-        return reminders;
-      });
+    return this[p.api].get('reminders');
   }
 
   /**
@@ -105,11 +98,7 @@ export default class Reminders {
    * @return {Promise}
    */
   get(id) {
-    return this[p.api].get(`reminders/${id}`)
-      .then((reminder) => {
-        reminder.recipients = this.mapUsersToId(reminder.recipients);
-        return reminder;
-      });
+    return this[p.api].get(`reminders/${id}`);
   }
 
   /**
