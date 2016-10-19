@@ -22,6 +22,10 @@ export default class Reminders {
    * This is used to map user names to their respective ids.
    */
   getAllUsersInGroup() {
+    if (Object.keys(this[p.userNamesToIdMap]).length) {
+      return;
+    }
+
     return Promise.all([
       this[p.api].get('users/myself'),
       this[p.api].get('users/myself/relations'),
@@ -119,15 +123,14 @@ export default class Reminders {
    * @return {Promise}
    */
   update(body) {
-    const id = body.id;
+    const id = parseInt(body.id, 10);
 
-    if (isNaN(id) || typeof id !== 'number') {
+    if (Number.isNaN(id) || typeof id !== 'number') {
       return Promise.reject(new Error('The reminder id is not a number.'));
     }
 
-    //body.recipients = this.mapUsersToId(body.recipients);
     delete body.recipients;
-    return this[p.api].put(`reminders/${id}`, body);
+    return this[p.api].patch(`reminders/${id}`, body);
   }
 
   /**

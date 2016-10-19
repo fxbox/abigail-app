@@ -67,6 +67,20 @@ export default class API {
   }
 
   /**
+   * Performs HTTP 'PATCH' API request and accepts JSON as response.
+   *
+   * @param {string} path Specific API resource path to be used in conjunction
+   * with the base API path.
+   * @param {Object=} body Optional object that will be serialized to JSON
+   * string and sent as 'PATCH' body.
+   * @return {Promise}
+   */
+  patch(path, body) {
+    return this[p.onceReady]()
+      .then(() => this[p.net].fetchJSON(this[p.getURL](path), 'PATCH', body));
+  }
+
+  /**
    * Performs HTTP 'DELETE' API request and accepts JSON as response.
    *
    * @param {string} path Specific API resource path to be used in conjunction
