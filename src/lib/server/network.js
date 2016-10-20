@@ -29,11 +29,11 @@ export default class Network extends EventDispatcher {
   [p.init]() {
     this[p.online] = navigator.onLine;
 
-    window.addEventListener('online', (online) => {
+    addEventListener('online', (online) => {
       this[p.online] = online;
       this.emit('online', online);
     });
-    window.addEventListener('offline', (online) => {
+    addEventListener('offline', (online) => {
       this[p.online] = online;
       this.emit('online', online);
     });

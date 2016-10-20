@@ -30,7 +30,7 @@ class EditDialog extends Component {
   }
 
   componentDidMount() {
-    window.document.addEventListener('keydown', this.onKeyPress);
+    document.addEventListener('keydown', this.onKeyPress);
   }
 
   /**
@@ -52,7 +52,7 @@ class EditDialog extends Component {
   }
 
   componentWillUnmount() {
-    window.document.removeEventListener('keydown', this.onKeyPress);
+    document.removeEventListener('keydown', this.onKeyPress);
   }
 
   onKeyPress(evt) {

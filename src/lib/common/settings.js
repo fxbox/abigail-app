@@ -65,7 +65,7 @@ export default class Settings extends EventDispatcher {
       );
     });
 
-    window.addEventListener('storage', this[p.onStorage].bind(this));
+    addEventListener('storage', this[p.onStorage].bind(this));
 
     Object.seal(this);
   }

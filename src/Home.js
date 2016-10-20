@@ -9,7 +9,7 @@ class Home extends Component {
   }
 
   componentWillMount() {
-    if (!window.sessionStorage) {
+    if (typeof sessionStorage === 'undefined') {
       // The following code won't work under Node.js.
       return;
     }

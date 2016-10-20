@@ -19,7 +19,7 @@ class Microphone extends Component {
     this.server = props.server;
     this.analytics = props.analytics;
 
-    this.audioCtx = 'AudioContext' in window ? new window.AudioContext() : null;
+    this.audioCtx = 'AudioContext' in window ? new AudioContext() : null;
     this.audioBuffer = null;
     this.bufferSource = null;
     this.timeout = null;

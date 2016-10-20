@@ -50,7 +50,7 @@ export default class Analytics {
     ga('send', 'pageview');
 
     // Track the installation of the app using the W3C app manifest.
-    window.addEventListener('install', () => {
+    addEventListener('install', () => {
       ga('send', 'event', 'App', 'install');
     });
 

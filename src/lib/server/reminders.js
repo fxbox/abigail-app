@@ -58,7 +58,6 @@ export default class Reminders {
       return [
         {
           id: 'myself',
-          forename: 'Me',
         }
       ];
     }
@@ -67,7 +66,6 @@ export default class Reminders {
       if (user === 'me') {
         return {
           id: 'myself',
-          forename: 'Me',
         };
       }
 
