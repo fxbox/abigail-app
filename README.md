@@ -1,4 +1,4 @@
-# 📆 Project Abigail app [![Build Status](https://travis-ci.org/project-abigail/app.svg?branch=master)](https://travis-ci.org/project-abigail/app)
+# :calendar: Project Abigail app [![Build Status](https://travis-ci.org/project-abigail/app.svg?branch=master)](https://travis-ci.org/project-abigail/app)
 
 > Web app for Project Abigail.
 
@@ -16,10 +16,9 @@ $ npm start
 $ npm test
 ```
 
-## How to publish on Github Pages?
+## How to deploy on Github Pages?
 
 ```bash
 $ npm run build
+$ npm run deploy
 ```
-
-Then, once the build is done, follow the instructions.
