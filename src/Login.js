@@ -30,8 +30,10 @@ class Login extends Component {
   }
 
   componentDidUpdate() {
-    this.loginField.selectionStart = this.state.cursor;
-    this.loginField.selectionEnd = this.state.cursor;
+    if (document.activeElement === this.loginField) {
+      this.loginField.selectionStart = this.state.cursor;
+      this.loginField.selectionEnd = this.state.cursor;
+    }
   }
 
   onChange(evt) {
