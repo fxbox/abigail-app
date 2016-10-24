@@ -2610,8 +2610,8 @@ inquirer@^0.12.0:
     through "^2.3.6"
 
 intent-parser@^1.0.2:
-  version "1.0.6"
-  resolved "https://registry.yarnpkg.com/intent-parser/-/intent-parser-1.0.6.tgz#78807fb0fa6b75d3fceab054b07b0292991b0f6b"
+  version "1.0.7"
+  resolved "https://registry.yarnpkg.com/intent-parser/-/intent-parser-1.0.7.tgz#d082815d97eb139edeb315cfa7fad6da3c68284b"
   dependencies:
     chrono-node "^1.2.4"
     moment "^2.15.1"

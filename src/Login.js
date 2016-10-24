@@ -13,8 +13,6 @@ class Login extends Component {
     this.state = {
       login: '', // A phone number
       password: '',
-
-      cursor: 0, // The position of the caret in the input field.
     };
 
     this.server = props.route.server;
@@ -29,17 +27,9 @@ class Login extends Component {
     this.onFormSubmit = this.onFormSubmit.bind(this);
   }
 
-  componentDidUpdate() {
-    if (document.activeElement === this.loginField) {
-      this.loginField.selectionStart = this.state.cursor;
-      this.loginField.selectionEnd = this.state.cursor;
-    }
-  }
-
   onChange(evt) {
     const login = this.cleanPhoneNumber(evt.target.value);
-    const cursor = this.loginField.selectionStart;
-    this.setState({ login, cursor });
+    this.setState({ login });
   }
 
   onChangePassword(evt) {
@@ -80,7 +70,9 @@ class Login extends Component {
       <form className="user-login" onSubmit={this.onFormSubmit}>
         <Toaster ref={(t) => this.toaster = t}/>
         <h1 className="user-login__header">Project Abigail</h1>
-        <input value={this.state.login}
+        <input type="number"
+               value={this.state.login}
+               pattern="[0-9]{10}"
                placeholder="Phone number"
                className="user-login__name-field"
                ref={(t) => this.loginField = t}
