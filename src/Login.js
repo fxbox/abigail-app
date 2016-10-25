@@ -18,7 +18,6 @@ class Login extends Component {
     this.server = props.route.server;
     this.analytics = props.route.analytics;
 
-    this.loginField = null;
     this.toaster = null;
     this.toasterTimeout = null;
 
@@ -28,8 +27,12 @@ class Login extends Component {
   }
 
   onChange(evt) {
-    const login = this.cleanPhoneNumber(evt.target.value);
-    this.setState({ login });
+    const value = evt.target.value;
+    const login = this.cleanPhoneNumber(value);
+
+    if (value !== '' || login.length === 0) {
+      this.setState({ login });
+    }
   }
 
   onChangePassword(evt) {
@@ -39,9 +42,8 @@ class Login extends Component {
 
   cleanPhoneNumber(string = '') {
     return string
-      .replace(/\+1/g, '') // Remove the country code.
-      .replace(/\D+/g, '') // Remove non numeric characters.
-      .substring(0, 10);
+      .replace(/[^0-9+]+/g, '') // Remove non numeric characters and +.
+      .substring(0, 13);
   }
 
   onFormSubmit(evt) {
@@ -70,12 +72,13 @@ class Login extends Component {
       <form className="user-login" onSubmit={this.onFormSubmit}>
         <Toaster ref={(t) => this.toaster = t}/>
         <h1 className="user-login__header">Project Abigail</h1>
-        <input type="number"
+        <input type="tel"
                value={this.state.login}
-               pattern="[0-9]{10}"
+               pattern="^\+?[0-9]{10,13}$"
+               minLength="10"
+               maxLength="13"
                placeholder="Phone number"
                className="user-login__name-field"
-               ref={(t) => this.loginField = t}
                onChange={this.onChange}/>
         <input type="password"
                value={this.state.password}

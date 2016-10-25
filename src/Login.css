@@ -5,29 +5,42 @@
   justify-content: space-around;
   height: 100%;
   text-align: center;
+  padding: 3rem;
+  box-sizing: border-box
 }
 
 .user-login__header {
-  font-size: 6rem;
-  line-height: 10rem;
+  font-size: 5rem;
+  line-height: 5rem;
+  min-height: 5rem;
 }
 
 .user-login__name-field,
 .user-login__password-field {
-  width: 75vmax;
+  width: 100%;
   min-height: 5rem;
 
   text-align: center;
-  border: none;
+  border: .1rem solid grey;
   border-radius: 0;
-  font-size: 6rem;
-  line-height: 6rem;
+  font-size: 5rem;
+  line-height: 5rem;
+  padding: 0;
+  margin: 0;
+}
+
+.user-login__name-field {
   font-variant: small-caps;
 }
 
+.user-login__name-field:invalid {
+  background: lightcoral;
+}
+
 .user-login__login-button {
-  width: 10rem;
-  height: 10rem;
+  width: 5rem;
+  height: 5rem;
+  padding: 0;
 
   border: none;
   background: transparent;
@@ -35,4 +48,49 @@
 
 .user-login__login-button:disabled {
   background: #c1d9d8;
+}
+
+/* Small devices (portrait phones, under 34em) */
+@media (max-width: 34em) {
+  .user-login__header,
+  .user-login__name-field,
+  .user-login__password-field {
+    font-size: 3rem;
+  }
+}
+
+/* Small devices (landscape phones, 34em and up) */
+@media (min-width: 34em) {
+  .user-login__header,
+  .user-login__name-field,
+  .user-login__password-field {
+    font-size: 3rem;
+  }
+}
+
+/* Medium devices (tablets, 48em and up) */
+@media (min-width: 48em) {
+  .user-login__header,
+  .user-login__name-field,
+  .user-login__password-field {
+    font-size: 4rem;
+  }
+}
+
+/* Large devices (desktops, 62em and up) */
+@media (min-width: 62em) {
+  .user-login__header,
+  .user-login__name-field,
+  .user-login__password-field {
+    font-size: 4rem;
+  }
+}
+
+/* Extra large devices (large desktops, 75em and up) */
+@media (min-width: 75em) {
+  .user-login__header,
+  .user-login__name-field,
+  .user-login__password-field {
+    font-size: 5rem;
+  }
 }
