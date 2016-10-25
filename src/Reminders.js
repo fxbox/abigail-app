@@ -12,6 +12,8 @@ class Reminders extends Component {
   constructor(props) {
     super(props);
 
+    moment.locale('en-US');
+
     this.state = {
       reminders: [],
     };
@@ -29,8 +31,6 @@ class Reminders extends Component {
     this.onWebPushMessage = this.onWebPushMessage.bind(this);
     this.refreshReminders = this.refreshReminders.bind(this);
     this.addReminder = this.addReminder.bind(this);
-
-    moment.locale(navigator.languages || navigator.language || 'en-US');
   }
 
   componentWillMount() {
