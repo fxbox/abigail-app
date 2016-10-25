@@ -1,13 +1,13 @@
 .microphone {
   position: fixed;
   z-index: 2;
-  top: 3rem;
-  right: 3rem;
+  top: 2.5rem;
+  right: 2.5rem;
   width: 8rem;
   height: 8rem;
 
   border-radius: 100%;
-  background: #fff;
+  background: whitesmoke;
 }
 
 .microphone__background {

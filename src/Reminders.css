@@ -12,7 +12,7 @@
   position: sticky;
   z-index: 1;
   top: 0;
-  margin: 0 0 1rem;
+  margin: 0 0 2rem;
   padding: 0 0 1rem;
   color: #6f45c9;
   background: #fff;
@@ -29,7 +29,7 @@
   position: sticky;
   top: 5rem;
   max-height: 9rem;
-  margin: 0.5rem 2rem 0 0;
+  margin: 0.5rem 1rem 0 0;
   padding: 0;
   text-align: center;
   background: #fff;
@@ -64,7 +64,7 @@
 }
 
 .reminders__item-time {
-  margin: 1rem 2rem 0 0;
+  margin: 1rem 1rem 0 0;
   text-align: center;
   color: #333;
   font-size: 2rem;
