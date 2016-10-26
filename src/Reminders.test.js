@@ -17,6 +17,7 @@ it('renders without crashing', () => {
       off: () => {
       },
       reminders: {
+        getUsers: () => [],
         getAll: () => {
           return Promise.resolve();
         },

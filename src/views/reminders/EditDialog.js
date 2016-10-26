@@ -3,16 +3,22 @@ import moment from 'moment';
 
 import './EditDialog.css';
 
+const MODE = {
+  CREATE: 0,
+  EDIT: 1,
+};
+
 class EditDialog extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      mode: MODE.CREATE,
       display: false,
       id: null,
-      recipients: null,
-      action: null,
-      due: null,
+      recipients: [],
+      action: '',
+      due: Date.now(),
     };
 
     this.server = props.server;
@@ -23,6 +29,7 @@ class EditDialog extends Component {
     this.dueTimeInput = null;
 
     this.onKeyPress = this.onKeyPress.bind(this);
+    this.onChangeUsers = this.onChangeUsers.bind(this);
     this.onChangeAction = this.onChangeAction.bind(this);
     this.onChangeDue = this.onChangeDue.bind(this);
     this.onSave = this.onSave.bind(this);
@@ -68,8 +75,13 @@ class EditDialog extends Component {
     }
   }
 
+  onChangeUsers(evt) {
+    const recipients = [evt.target.value];
+    this.setState({ recipients });
+  }
+
   onChangeAction(evt) {
-    const action = (evt.target.value).trim();
+    const action = evt.target.value;
 
     if (action) {
       this.setState({ action });
@@ -94,26 +106,45 @@ class EditDialog extends Component {
 
   onSave() {
     const reminder = {
-      id: this.state.id,
       recipients: this.state.recipients,
-      action: this.state.action,
+      action: this.state.action.trim(),
       due: this.state.due,
     };
-    this.server.reminders.update(reminder)
-      .then(() => {
-        this.analytics.event('reminders', 'edit');
 
-        this.refreshReminders();
-        this.hide();
-      })
-      .catch((err) => {
-        console.error(err);
+    if (this.state.mode === MODE.EDIT) {
+      reminder.id = this.state.id;
+      this.server.reminders.update(reminder)
+        .then(() => {
+          this.analytics.event('reminders', 'edit');
 
-        this.analytics.event('reminders', 'error', 'edit-failed');
+          this.refreshReminders();
+          this.hide();
+        })
+        .catch((err) => {
+          console.error(err);
 
-        this.hide();
-        alert('The reminder could not be updated. Try again later.');
-      });
+          this.analytics.event('reminders', 'error', 'edit-failed');
+
+          this.hide();
+          alert('The reminder could not be updated. Try again later.');
+        });
+    } else if (this.state.mode === MODE.CREATE) {
+      this.server.reminders.set(reminder)
+        .then(() => {
+          this.analytics.event('reminders', 'create');
+
+          this.refreshReminders();
+          this.hide();
+        })
+        .catch((err) => {
+          console.error(err);
+
+          this.analytics.event('reminders', 'error', 'create-failed');
+
+          this.hide();
+          alert('The reminder could not be create. Try again later.');
+        });
+    }
   }
 
   onClose() {
@@ -121,13 +152,28 @@ class EditDialog extends Component {
   }
 
   show(reminder = null) {
-    this.setState({
-      display: true,
-      id: reminder.id,
-      recipients: reminder.recipients,
-      action: reminder.action,
-      due: reminder.due,
-    });
+    if (reminder !== null) {
+      this.setState({
+        mode: MODE.EDIT,
+        display: true,
+        id: reminder.id,
+        recipients: reminder.recipients,
+        action: reminder.action,
+        due: reminder.due,
+      });
+
+      this.analytics.event('reminders', 'start-edit');
+    } else {
+      this.setState({
+        mode: MODE.CREATE,
+        display: true,
+        recipients: [],
+        action: '',
+        due: Date.now(),
+      });
+
+      this.analytics.event('reminders', 'start-create');
+    }
   }
 
   hide() {
@@ -139,7 +185,23 @@ class EditDialog extends Component {
       return null;
     }
 
-    const recipients = this.state.recipients.map((user) => user.forename);
+    let usersNode = null;
+    if (this.state.mode === MODE.EDIT) {
+      const users = this.state.recipients.map((user) => user.forename);
+      usersNode = (
+        <input className="dialog-content__input"
+               value={users}
+               disabled/>);
+    } else {
+      const users = this.server.reminders.getUsers();
+      usersNode = (
+        <select className="dialog-content__select"
+                onChange={this.onChangeUsers}>
+          {users.map((user) => (
+            <option key={user} value={user}>{user}</option>
+          ))}
+        </select>);
+    }
 
     return (
       <div>
@@ -156,9 +218,7 @@ class EditDialog extends Component {
           <div className="dialog-content">
             <div className="dialog-content__section">
               <h4>Recipients</h4>
-              <input className="dialog-content__input"
-                     value={recipients}
-                     disabled/>
+              {usersNode}
             </div>
             <div className="dialog-content__section">
               <h4>Action</h4>

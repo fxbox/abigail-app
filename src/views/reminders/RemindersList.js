@@ -3,7 +3,6 @@ import groupBy from 'lodash/groupBy';
 import moment from 'moment';
 
 import ReminderItem from './ReminderItem';
-import EditDialog from './EditDialog';
 
 class RemindersList extends Component {
   constructor(props) {
@@ -16,12 +15,12 @@ class RemindersList extends Component {
     this.server = props.server;
     this.analytics = props.analytics;
     this.refreshReminders = props.refreshReminders;
-
-    this.editDialog = null;
+    this.editDialog = props.editDialog;
   }
 
   componentWillReceiveProps(props) {
     this.setState({ reminders: props.reminders });
+    this.editDialog = props.editDialog;
   }
 
   onEdit(id) {
@@ -112,10 +111,6 @@ class RemindersList extends Component {
     return (
       <div>
         {remindersNode}
-        <EditDialog server={this.server}
-                    analytics={this.analytics}
-                    refreshReminders={this.refreshReminders}
-                    ref={(t) => this.editDialog = t}/>
       </div>
     );
   }
@@ -126,6 +121,7 @@ RemindersList.propTypes = {
   analytics: React.PropTypes.object.isRequired,
   reminders: React.PropTypes.array,
   refreshReminders: React.PropTypes.func.isRequired,
+  editDialog: React.PropTypes.object,
 };
 
 export default RemindersList;

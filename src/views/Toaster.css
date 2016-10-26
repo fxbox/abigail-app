@@ -7,8 +7,9 @@
   width: 50%;
   margin: 0 auto;
   padding: 1.6rem;
-  transition: transform 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
   transform: translateY(-100%);
+  opacity: 0;
   text-align: center;
   border: 0.1rem solid #000;
   border-top: none;
@@ -16,6 +17,11 @@
   border-bottom-right-radius: 1rem;
   font-size: 2rem;
   font-weight: 400;
+}
+
+.toaster.visible {
+  transform: translateY(0);
+  opacity: 1;
 }
 
 .toaster.success {

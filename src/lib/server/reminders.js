@@ -53,6 +53,10 @@ export default class Reminders {
       });
   }
 
+  getUsers() {
+    return ['me'].concat(Object.keys(this[p.userNamesToIdMap]));
+  }
+
   mapUsersToId(users = []) {
     if (!users.length) {
       return [
@@ -63,7 +67,7 @@ export default class Reminders {
     }
 
     return users.map((user) => {
-      if (user === 'me') {
+      if (user.toLowerCase() === 'me') {
         return {
           id: 'myself',
         };

@@ -5,7 +5,11 @@ import EditDialog from './EditDialog';
 it('renders without crashing', () => {
   const div = document.createElement('div');
   const mockProps = {
-    server: {},
+    server: {
+      reminders: {
+        getUsers: () => [],
+      },
+    },
     analytics: {},
     refreshReminders: () => {
     },

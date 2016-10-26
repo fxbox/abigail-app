@@ -4,7 +4,9 @@ import moment from 'moment';
 
 import Toaster from './views/Toaster';
 import Microphone from './views/Microphone';
+import NewReminder from './views/NewReminder';
 import RemindersList from './views/reminders/RemindersList';
+import EditDialog from './views/reminders/EditDialog';
 
 import './Reminders.css';
 
@@ -17,6 +19,9 @@ class Reminders extends Component {
     this.state = {
       reminders: [],
     };
+
+    this.remindersList = null;
+    this.editDialog = null;
 
     this.speechController = props.route.speechController;
     this.server = props.route.server;
@@ -94,6 +99,7 @@ class Reminders extends Component {
     return this.server.reminders.getAll()
       .then((reminders) => {
         this.setState({ reminders });
+        this.remindersList.forceUpdate();
       });
   }
 
@@ -220,14 +226,24 @@ class Reminders extends Component {
     return (
       <section className="reminders">
         <Toaster ref={(t) => this.toaster = t}/>
-        <Microphone ref={(t) => this.microphone = t}
-                    speechController={this.speechController}
-                    server={this.server}
-                    analytics={this.analytics}/>
+        <div className="menu">
+          <Microphone speechController={this.speechController}
+                      server={this.server}
+                      analytics={this.analytics}
+                      ref={(t) => this.microphone = t}/>
+          <NewReminder analytics={this.analytics}
+                       editDialog={this.editDialog}/>
+        </div>
         <RemindersList reminders={this.state.reminders}
                        server={this.server}
                        analytics={this.analytics}
-                       refreshReminders={this.refreshReminders}/>
+                       refreshReminders={this.refreshReminders}
+                       editDialog={this.editDialog}
+                       ref={(t) => this.remindersList = t}/>
+        <EditDialog server={this.server}
+                    analytics={this.analytics}
+                    refreshReminders={this.refreshReminders}
+                    ref={(t) => this.editDialog = t}/>
       </section>
     );
   }

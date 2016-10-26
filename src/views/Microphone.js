@@ -125,9 +125,7 @@ class Microphone extends Component {
     return (
       <div className="microphone">
         <div className={className} onClick={this.onClickMic}>
-          <div className="microphone__background"></div>
-          <img className="microphone__icon"
-               src={microphoneImage}
+          <img src={microphoneImage}
                role="presentation"/>
         </div>
       </div>

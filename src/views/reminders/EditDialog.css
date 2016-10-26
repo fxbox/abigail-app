@@ -3,7 +3,7 @@
   z-index: 2;
   top: 0;
   left: 0;
-  width: 100vw;
+  width: 100%;
   height: 100vh;
   opacity: 0.5;
   background: #fff;
@@ -13,7 +13,7 @@
   position: absolute;
   z-index: 3;
   top: 10rem;
-  left: calc((100vw - 30rem) / 2);
+  left: calc((100% - 30rem) / 2);
   box-sizing: border-box;
   width: 30rem;
   padding: 3rem;
@@ -53,12 +53,20 @@
   margin: 0 0 1rem;
 }
 
+.dialog-content__select {
+  text-transform: capitalize;
+}
+
 .dialog-content__input {
   box-sizing: border-box;
   width: 100%;
   padding: 0 0 0 0.5rem;
   border: 0.1rem solid #ddd;
   border-radius: 0;
+}
+
+.dialog-content__input::first-letter {
+  text-transform: uppercase;
 }
 
 textarea.dialog-content__input {

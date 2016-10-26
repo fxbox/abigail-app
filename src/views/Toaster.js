@@ -62,11 +62,13 @@ class Toaster extends Component {
   }
 
   render() {
-    const className = `toaster ${this.validateType(this.state.type)}`;
-    const transform = this.state.display ?
-      'translateY(0)' : 'translateY(-100%)';
+    let className = `toaster ${this.validateType(this.state.type)}`;
+    if (this.state.display) {
+      className += ' visible';
+    }
+
     return (
-      <div className={className} style={{ transform }}>
+      <div className={className}>
         <p>{this.state.message}</p>
       </div>
     );
