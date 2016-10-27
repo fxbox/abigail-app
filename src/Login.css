@@ -46,6 +46,11 @@
   background: transparent;
 }
 
+.user-login__login-button img {
+  width: 100%;
+  height: 100%;
+}
+
 .user-login__login-button:disabled {
   background: #c1d9d8;
 }

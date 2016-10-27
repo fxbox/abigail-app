@@ -18,7 +18,7 @@ class EditDialog extends Component {
       id: null,
       recipients: [],
       action: '',
-      due: Date.now(),
+      dueMoment: null,
     };
 
     this.server = props.server;
@@ -38,24 +38,6 @@ class EditDialog extends Component {
 
   componentDidMount() {
     document.addEventListener('keydown', this.onKeyPress);
-  }
-
-  /**
-   * Circumvent a bug in Chrome for Android (tested in v.52 and v.53) where the
-   * date and time inputs value are not populated via the `value` attribute and
-   * must be set using the `value` property.
-   */
-  componentDidUpdate() {
-    if (!this.dueDateInput || !this.dueTimeInput) {
-      return;
-    }
-
-    const due = this.state.due;
-    const date = moment(due).format('YYYY-MM-DD');
-    const time = moment(due).format('HH:mm');
-
-    this.dueDateInput.value = date;
-    this.dueTimeInput.value = time;
   }
 
   componentWillUnmount() {
@@ -89,18 +71,11 @@ class EditDialog extends Component {
   }
 
   onChangeDue() {
-    const date = this.dueDateInput.value.split('-');
-    const time = this.dueTimeInput.value.split(':');
+    const datetime = `${this.dueDateInput.value} ${this.dueTimeInput.value}`;
+    const dueMoment = moment(datetime);
 
-    try {
-      const dueMoment = moment()
-        .year(date[0]).month(date[1] - 1).date(date[2])
-        .hour(time[0]).minute(time[1]);
-
-      const due = Number(dueMoment.toDate());
-      this.setState({ due });
-    } catch (err) {
-      console.error('Could not parse the input due date and time.');
+    if (dueMoment.isValid()) {
+      this.setState({ dueMoment });
     }
   }
 
@@ -108,7 +83,7 @@ class EditDialog extends Component {
     const reminder = {
       recipients: this.state.recipients,
       action: this.state.action.trim(),
-      due: this.state.due,
+      due: Number(this.state.dueMoment.toDate()),
     };
 
     if (this.state.mode === MODE.EDIT) {
@@ -159,7 +134,7 @@ class EditDialog extends Component {
         id: reminder.id,
         recipients: reminder.recipients,
         action: reminder.action,
-        due: reminder.due,
+        dueMoment: moment(reminder.due),
       });
 
       this.analytics.event('reminders', 'start-edit');
@@ -169,7 +144,7 @@ class EditDialog extends Component {
         display: true,
         recipients: [],
         action: '',
-        due: Date.now(),
+        dueMoment: moment(),
       });
 
       this.analytics.event('reminders', 'start-create');
@@ -229,11 +204,13 @@ class EditDialog extends Component {
             <div className="dialog-content__section">
               <h4>Due time</h4>
               <input className="dialog-content__input dialog-content__half"
+                     defaultValue={moment(this.state.dueMoment).format('YYYY-MM-DD')}
                      type="date"
                      placeholder="YYYY-MM-DD"
                      onChange={this.onChangeDue}
                      ref={(t) => this.dueDateInput = t}/>
               <input className="dialog-content__input dialog-content__half"
+                     defaultValue={moment(this.state.dueMoment).format('HH:mm')}
                      type="time"
                      placeholder="HH:mm"
                      onChange={this.onChangeDue}
