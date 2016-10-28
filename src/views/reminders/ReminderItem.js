@@ -37,6 +37,7 @@ class ReminderItem extends Component {
   getColour(forenames = '') {
     const hash = (string) => {
       let hash = 0, i, chr, len;
+      string = string.toLowerCase().trim();
       if (string.length === 0) {
         return 0;
       }
@@ -45,7 +46,7 @@ class ReminderItem extends Component {
         hash = ((hash << 5) - hash) + chr;
         hash |= 0; // Convert to 32bit integer
       }
-      return hash;
+      return Math.abs(hash);
     };
 
     return COLOURS[hash(forenames) % COLOURS.length];
@@ -64,14 +65,14 @@ class ReminderItem extends Component {
     return (
       <li className="reminders__item">
         <div className="reminders__item-time">
-          <div>{moment(reminder.due).format('LT')}</div>
+          {moment(reminder.due).format('LT')}
         </div>
         <div className={contentClassName}>
           <h3 className="reminders__item-recipient">
             {recipients}
           </h3>
           <p className="reminders__item-text">
-            {reminder.action}
+            <span>{reminder.action}</span>
             <button className="reminders__button reminders__edit"
                     onClick={this.onEdit}>
               Edit

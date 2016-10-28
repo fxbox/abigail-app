@@ -179,7 +179,7 @@ class EditDialog extends Component {
     }
 
     return (
-      <div>
+      <div className="EditDialog">
         <div className="dialog-overlay"
              onClick={this.onClose}></div>
 

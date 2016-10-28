@@ -5,6 +5,7 @@ import moment from 'moment';
 import Toaster from './views/Toaster';
 import Microphone from './views/Microphone';
 import NewReminder from './views/NewReminder';
+import OverflowMenu from './views/OverflowMenu';
 import RemindersList from './views/reminders/RemindersList';
 import EditDialog from './views/reminders/EditDialog';
 
@@ -227,6 +228,8 @@ class Reminders extends Component {
       <section className="reminders">
         <Toaster ref={(t) => this.toaster = t}/>
         <div className="menu">
+          <OverflowMenu server={this.server}
+                        analytics={this.analytics}/>
           <Microphone speechController={this.speechController}
                       server={this.server}
                       analytics={this.analytics}

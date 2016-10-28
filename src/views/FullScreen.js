@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 
 import './FullScreen.css';
+import fullScreenImage from '../icons/full-screen.svg';
 
 class FullScreen extends Component {
   constructor(props) {
@@ -15,8 +16,11 @@ class FullScreen extends Component {
       document.mozFullScreenEnabled || document.webkitFullscreenEnabled ||
       document.msFullscreenEnabled);
 
+    this.analytics = props.analytics;
+
     this.onFullScreenChange = this.onFullScreenChange.bind(this);
-    this.onFullScreen = this.onFullScreen.bind(this);
+    this.onEnterFullScreen = this.onEnterFullScreen.bind(this);
+    this.onExitFullScreen = this.onExitFullScreen.bind(this);
   }
 
   componentDidMount() {
@@ -50,7 +54,7 @@ class FullScreen extends Component {
     this.setState({ isFullScreen });
   }
 
-  onFullScreen() {
+  onEnterFullScreen() {
     if (this.state.isFullScreen) {
       return;
     }
@@ -66,16 +70,50 @@ class FullScreen extends Component {
     } else if (target.webkitRequestFullscreen) {
       target.webkitRequestFullscreen(Element.ALLOW_KEYBOARD_INPUT);
     }
+
+    this.analytics.event('ui', 'enter-fullscreen');
+  }
+
+  onExitFullScreen() {
+    if (!this.state.isFullScreen) {
+      return;
+    }
+
+    const target = document;
+
+    if (target.exitFullscreen) {
+      target.exitFullscreen();
+    } else if (target.mozCancelFullScreen) {
+      target.mozCancelFullScreen();
+    } else if (target.msExitFullscreen) {
+      target.msExitFullscreen();
+    } else if (target.webkitExitFullscreen) {
+      target.webkitExitFullscreen();
+    }
+
+    this.analytics.event('ui', 'exit-fullscreen');
   }
 
   render() {
-    if (!this.fullScreenEnabled || this.state.isFullScreen) {
+    if (!this.fullScreenEnabled) {
       return null;
     }
 
+    let label = 'Go full screen';
+    let action = this.onEnterFullScreen;
+    if (this.state.isFullScreen) {
+      label = 'Exit full screen';
+      action = this.onExitFullScreen;
+    }
+
     return (
-      <button className="full-screen__button"
-              onClick={this.onFullScreen}/>
+      <li>
+        <button onClick={action}>
+          <img src={fullScreenImage}
+               role="presentation"/>
+          {label}
+        </button>
+      </li>
     );
   }
 }

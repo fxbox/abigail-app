@@ -1,0 +1,65 @@
+.OverflowMenu {
+  width: 4rem;
+  height: 4rem;
+  margin: 1rem 1rem 1rem 0;
+  border-radius: 100%;
+  background: whitesmoke;
+}
+
+.OverflowMenu > img {
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 0.75rem;
+  cursor: pointer;
+}
+
+.OverflowMenu .menu-items {
+  position: absolute;
+  right: 0;
+  background: white;
+  padding: 1rem;
+  margin: 0;
+  box-shadow: 0 0 0.4rem rgba(0, 0, 0, 0.5);
+  transform: translateX(100%);
+  transition: all 0.3s ease-in-out;
+}
+
+.OverflowMenu .menu-items.visible {
+  transform: translateX(0);
+}
+
+.OverflowMenu .menu-items li {
+  margin: 1rem 0;
+  white-space: nowrap;
+}
+
+.OverflowMenu .menu-items li:first-child {
+  margin-top: 0;
+}
+
+.OverflowMenu .menu-items li:last-child {
+  margin-bottom: 0;
+}
+
+.OverflowMenu .menu-items button {
+  width: 100%;
+  height: 100%;
+  padding: 2rem 1rem;
+  border: none;
+  font-size: 1.8rem;
+  line-height: 1.8rem;
+  color: dimgrey;
+  text-align: left;
+  cursor: pointer;
+}
+
+.OverflowMenu .menu-items button.log-out {
+  padding-left: 3.6rem;
+}
+
+.OverflowMenu .menu-items li img {
+  width: 1.8rem;
+  height: 1.8rem;
+  padding-right: 1rem;
+  vertical-align: bottom;
+}

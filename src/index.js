@@ -8,7 +8,6 @@ import Home from './Home';
 import Login from './Login';
 import Logout from './Logout';
 import Reminders from './Reminders';
-import FullScreen from './FullScreen';
 
 import SpeechController from './lib/speech-controller';
 import Settings from './lib/common/settings';
@@ -40,9 +39,4 @@ ReactDOM.render(
     <Route path="reminders" component={Reminders} {...options}/>
   </Router>,
   document.querySelector('.app-view-container')
-);
-
-ReactDOM.render(
-  <FullScreen/>,
-  document.querySelector('.full-screen')
 );
