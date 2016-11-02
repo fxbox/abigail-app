@@ -2,8 +2,14 @@
   width: 4rem;
   height: 4rem;
   margin: 1rem 1rem 1rem 0;
+
   border-radius: 100%;
   background: whitesmoke;
+  transition: 300ms;
+}
+
+.OverflowMenu:active {
+  background: #6f45c9;
 }
 
 .OverflowMenu > img {
@@ -11,6 +17,10 @@
   height: 2.5rem;
   margin: 0.75rem;
   cursor: pointer;
+}
+
+.OverflowMenu:active > img {
+  filter: brightness(20);
 }
 
 .OverflowMenu .menu-items {

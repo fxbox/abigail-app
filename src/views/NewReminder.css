@@ -8,8 +8,16 @@
   transition: 300ms;
 }
 
-.new-reminder img {
+.new-reminder:active {
+  background: #6f45c9;
+}
+
+.new-reminder > img {
   width: 2.5rem;
   height: 2.5rem;
   margin: 0.75rem;
+}
+
+.new-reminder:active > img {
+  filter: brightness(20);
 }

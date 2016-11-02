@@ -7,6 +7,8 @@
 .microphone > div {
   width: 4rem;
   height: 4rem;
+  margin: 0;
+
   border-radius: 100%;
   background: whitesmoke;
   transition: cubic-bezier(0.5, -0.5, 0.5, 1.5) 300ms;
@@ -19,7 +21,7 @@
 }
 
 .microphone > .listening {
-  transform: translate(-3.5rem, 3.5rem) scale(3);
+  transform: translateY(3.5rem) scale(3);
   background: #6f45c9;
 }
 
