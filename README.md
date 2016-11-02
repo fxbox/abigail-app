@@ -4,7 +4,7 @@
 
 ## How to develop?
 
-Fork and `npm install` then:
+Clone, `npm install` then:
 
 ```bash
 $ npm start
@@ -19,6 +19,5 @@ $ npm test
 ## How to deploy on Github Pages?
 
 ```bash
-$ npm run build
 $ npm run deploy
 ```

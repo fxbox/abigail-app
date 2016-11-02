@@ -4,12 +4,5 @@ import ReminderItem from './ReminderItem';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const mockProps = {
-    reminder: {},
-    onDelete: () => {
-    },
-    onEdit: () => {
-    },
-  };
-  ReactDOM.render(<ReminderItem {...mockProps}/>, div);
+  ReactDOM.render(<ReminderItem/>, div);
 });

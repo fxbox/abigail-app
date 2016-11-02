@@ -15,8 +15,8 @@ class Login extends Component {
       password: '',
     };
 
-    this.server = props.route.server;
-    this.analytics = props.route.analytics;
+    this.server = props.route && props.route.server;
+    this.analytics = props.route && props.route.analytics;
 
     this.toaster = null;
     this.toasterTimeout = null;

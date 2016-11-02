@@ -4,9 +4,5 @@ import OverflowMenu from './OverflowMenu';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  const mockProps = {
-    server: {},
-    analytics: {},
-  };
-  ReactDOM.render(<OverflowMenu {...mockProps}/>, div);
+  ReactDOM.render(<OverflowMenu/>, div);
 });

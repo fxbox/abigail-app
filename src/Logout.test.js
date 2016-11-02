@@ -4,5 +4,5 @@ import Logout from './Logout';
 
 it('renders without crashing', () => {
   const div = document.createElement('div');
-  ReactDOM.render(<Logout route={{}}/>, div);
+  ReactDOM.render(<Logout/>, div);
 });

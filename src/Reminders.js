@@ -24,9 +24,9 @@ class Reminders extends Component {
     this.remindersList = null;
     this.editDialog = null;
 
-    this.speechController = props.route.speechController;
-    this.server = props.route.server;
-    this.analytics = props.route.analytics;
+    this.speechController = props.route && props.route.speechController;
+    this.server = props.route && props.route.server;
+    this.analytics = props.route && props.route.analytics;
 
     this.refreshInterval = null;
     this.toaster = null;
@@ -65,25 +65,33 @@ class Reminders extends Component {
         });
     }, 10 * 1000);
 
-    this.speechController.on('speechrecognitionstart', this.debugEvent);
-    this.speechController.on('speechrecognitionstop', this.debugEvent);
-    this.speechController.on('reminder', this.debugEvent);
+    if (this.speechController) {
+      this.speechController.on('speechrecognitionstart', this.debugEvent);
+      this.speechController.on('speechrecognitionstop', this.debugEvent);
+      this.speechController.on('reminder', this.debugEvent);
+      this.speechController.on('reminder', this.onVoiceCommand);
+      this.speechController.on('parsing-failed', this.onParsingFailure);
+    }
 
-    this.speechController.on('reminder', this.onVoiceCommand);
-    this.speechController.on('parsing-failed', this.onParsingFailure);
-    this.server.on('push-message', this.onWebPushMessage);
+    if (this.server) {
+      this.server.on('push-message', this.onWebPushMessage);
+    }
   }
 
   componentWillUnmount() {
     clearInterval(this.refreshInterval);
 
-    this.speechController.off('speechrecognitionstart', this.debugEvent);
-    this.speechController.off('speechrecognitionstop', this.debugEvent);
-    this.speechController.off('reminder', this.debugEvent);
+    if (this.speechController) {
+      this.speechController.off('speechrecognitionstart', this.debugEvent);
+      this.speechController.off('speechrecognitionstop', this.debugEvent);
+      this.speechController.off('reminder', this.debugEvent);
+      this.speechController.off('reminder', this.onVoiceCommand);
+      this.speechController.off('parsing-failed', this.onParsingFailure);
+    }
 
-    this.speechController.off('reminder', this.onVoiceCommand);
-    this.speechController.off('parsing-failed', this.onParsingFailure);
-    this.server.off('push-message', this.onWebPushMessage);
+    if (this.server) {
+      this.server.off('push-message', this.onWebPushMessage);
+    }
   }
 
   debugEvent(evt) {
@@ -96,6 +104,10 @@ class Reminders extends Component {
   }
 
   refreshReminders() {
+    if (!this.server) {
+      return;
+    }
+
     // @todo Add a loader.
     return this.server.reminders.getAll()
       .then((reminders) => {
@@ -231,7 +243,6 @@ class Reminders extends Component {
           <OverflowMenu server={this.server}
                         analytics={this.analytics}/>
           <Microphone speechController={this.speechController}
-                      server={this.server}
                       analytics={this.analytics}
                       ref={(t) => this.microphone = t}/>
           <NewReminder analytics={this.analytics}

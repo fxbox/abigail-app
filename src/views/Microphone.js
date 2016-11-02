@@ -16,7 +16,6 @@ class Microphone extends Component {
     };
 
     this.speechController = props.speechController;
-    this.server = props.server;
     this.analytics = props.analytics;
 
     this.audioCtx = 'AudioContext' in window ? new AudioContext() : null;
@@ -30,6 +29,10 @@ class Microphone extends Component {
   }
 
   componentDidMount() {
+    if (!this.speechController) {
+      return;
+    }
+
     this.loadAudio();
 
     this.speechController.on('speechrecognitionstop',
@@ -37,6 +40,10 @@ class Microphone extends Component {
   }
 
   componentWillUnmount() {
+    if (!this.speechController) {
+      return;
+    }
+
     this.speechController.off('speechrecognitionstop',
       this.stopListeningToSpeech);
   }
@@ -116,7 +123,7 @@ class Microphone extends Component {
   }
 
   render() {
-    if (!this.server.isLoggedIn || !this.state.webSpeechAPISupport) {
+    if (!this.state.webSpeechAPISupport) {
       return null;
     }
 
@@ -134,9 +141,8 @@ class Microphone extends Component {
 }
 
 Microphone.propTypes = {
-  speechController: React.PropTypes.object.isRequired,
-  server: React.PropTypes.object.isRequired,
-  analytics: React.PropTypes.object.isRequired,
+  speechController: React.PropTypes.object,
+  analytics: React.PropTypes.object,
 };
 
 export default Microphone;

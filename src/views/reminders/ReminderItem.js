@@ -54,7 +54,8 @@ class ReminderItem extends Component {
 
   render() {
     const reminder = this.reminder;
-    const users = (reminder.recipients || []).map((user) => user.forename);
+    const users = ((reminder && reminder.recipients) || [])
+      .map((user) => user.forename);
     const recipients = this.listFormatter.format(users);
     const contentClassName = [
       'reminders__item-content',
@@ -65,14 +66,14 @@ class ReminderItem extends Component {
     return (
       <li className="reminders__item">
         <div className="reminders__item-time">
-          {moment(reminder.due).format('LT')}
+          {moment((reminder && reminder.due) || undefined).format('LT')}
         </div>
         <div className={contentClassName}>
           <h3 className="reminders__item-recipient">
             {recipients}
           </h3>
           <p className="reminders__item-text">
-            <span>{reminder.action}</span>
+            <span>{(reminder && reminder.action) || ''}</span>
             <button className="reminders__button reminders__edit"
                     onClick={this.onEdit}>
               Edit
@@ -89,9 +90,9 @@ class ReminderItem extends Component {
 }
 
 ReminderItem.propTypes = {
-  reminder: React.PropTypes.object.isRequired,
-  onDelete: React.PropTypes.func.isRequired,
-  onEdit: React.PropTypes.func.isRequired,
+  reminder: React.PropTypes.object,
+  onDelete: React.PropTypes.func,
+  onEdit: React.PropTypes.func,
 };
 
 export default ReminderItem;

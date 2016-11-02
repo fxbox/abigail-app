@@ -117,10 +117,10 @@ class RemindersList extends Component {
 }
 
 RemindersList.propTypes = {
-  server: React.PropTypes.object.isRequired,
-  analytics: React.PropTypes.object.isRequired,
+  server: React.PropTypes.object,
+  analytics: React.PropTypes.object,
   reminders: React.PropTypes.array,
-  refreshReminders: React.PropTypes.func.isRequired,
+  refreshReminders: React.PropTypes.func,
   editDialog: React.PropTypes.object,
 };
 

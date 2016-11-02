@@ -233,9 +233,9 @@ class EditDialog extends Component {
 }
 
 EditDialog.propTypes = {
-  server: React.PropTypes.object.isRequired,
-  analytics: React.PropTypes.object.isRequired,
-  refreshReminders: React.PropTypes.func.isRequired,
+  server: React.PropTypes.object,
+  analytics: React.PropTypes.object,
+  refreshReminders: React.PropTypes.func,
 };
 
 export default EditDialog;
