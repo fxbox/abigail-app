@@ -4,6 +4,13 @@
   "description": "Web app for Project Abigail.",
   "private": true,
   "devDependencies": {
+    "babel-eslint": "7.0.0",
+    "eslint": "3.8.1",
+    "eslint-config-react-app": "0.3.0",
+    "eslint-plugin-flowtype": "2.21.0",
+    "eslint-plugin-import": "2.0.1",
+    "eslint-plugin-jsx-a11y": "2.2.3",
+    "eslint-plugin-react": "6.4.1",
     "gh-pages": "^0.11.0",
     "react-scripts": "0.7.0"
   },
@@ -20,12 +27,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "lint": "eslint src/",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject",
     "deploy": "npm run build&&gh-pages -d build",
     "icons": "inkscape -e public/favicon.ico -w 32 public/img/icon.svg;inkscape -e public/img/icons/192.png -w 192 public/img/icon.svg;inkscape -e public/img/icons/512.png -w 512 public/img/icon.svg;inkscape -e public/img/icons/apple-touch-icon.png -w 180 -b white -a -64:-64:576:576 public/img/icon.svg;"
   },
-  "main": "index.js",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/project-abigail/app.git"
@@ -38,5 +45,8 @@
   "bugs": {
     "url": "https://github.com/project-abigail/app/issues"
   },
-  "homepage": "https://project-abigail.github.io/app"
+  "homepage": "https://project-abigail.github.io/app",
+  "eslintConfig": {
+    "extends": "react-app"
+  }
 }
