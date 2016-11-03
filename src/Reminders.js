@@ -21,7 +21,6 @@ class Reminders extends Component {
       reminders: [],
     };
 
-    this.remindersList = null;
     this.editDialog = null;
 
     this.speechController = props.route && props.route.speechController;
@@ -112,7 +111,6 @@ class Reminders extends Component {
     return this.server.reminders.getAll()
       .then((reminders) => {
         this.setState({ reminders });
-        this.remindersList.forceUpdate();
       });
   }
 
@@ -252,8 +250,7 @@ class Reminders extends Component {
                        server={this.server}
                        analytics={this.analytics}
                        refreshReminders={this.refreshReminders}
-                       editDialog={this.editDialog}
-                       ref={(t) => this.remindersList = t}/>
+                       editDialog={this.editDialog}/>
         <EditDialog server={this.server}
                     analytics={this.analytics}
                     refreshReminders={this.refreshReminders}

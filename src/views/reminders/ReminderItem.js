@@ -36,6 +36,10 @@ class ReminderItem extends Component {
     this.onEdit = props.onEdit;
   }
 
+  componentWillReceiveProps(props) {
+    this.reminder = props.reminder;
+  }
+
   getColour(forenames = '') {
     const hash = (string) => {
       let hash = 0, i, chr, len;
