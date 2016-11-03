@@ -3,6 +3,8 @@
 import React, { Component } from 'react';
 import moment from 'moment';
 
+import './ReminderItem.css';
+
 const COLOURS = [
   'red',
   'salmon',
@@ -64,7 +66,7 @@ class ReminderItem extends Component {
       .join(' ');
 
     return (
-      <li className="reminders__item">
+      <li className="ReminderItem">
         <div className="reminders__item-time">
           {moment((reminder && reminder.due) || undefined).format('LT')}
         </div>

@@ -1,4 +1,4 @@
-.reminders {
+.Reminders {
   box-sizing: border-box;
   min-height: 100%;
   margin: 0 auto 0;
@@ -8,213 +8,53 @@
   background: #fff;
 }
 
-.reminders .menu {
+.Reminders .menu {
   z-index: 2;
   position: absolute;
   top: 0;
   right: 0;
-  width: 50vw;
-  height: 7rem;
+  margin-top: 1.5rem;
+  padding-left: 1.5rem;
   display: flex;
   flex-direction: row-reverse;
+  background: #fff;
+  border-bottom-left-radius: 3rem;
 }
 
-.reminders .menu img {
+.Reminders .menu img {
   cursor: pointer;
-}
-
-.reminders__month {
-  position: sticky;
-  z-index: 1;
-  top: 0;
-  margin: 0 0 2rem;
-  padding: 1rem 0 1rem 0;
-  color: #6f45c9;
-  background: #fff;
-  font-size: 5rem;
-  line-height: 3rem;
-  font-weight: 200;
-}
-
-.reminders__day {
-  display: flex;
-  flex-direction: row;
-}
-
-.reminders__day-date {
-  position: sticky;
-  top: 5rem;
-  max-height: 9rem;
-  margin: 0.5rem 1rem 0 0;
-  padding: 0;
-  text-align: center;
-  background: #fff;
-}
-
-.reminders__day-mday {
-  color: #333;
-  font-size: 4rem;
-  font-weight: 100;
-  line-height: 4rem;
-}
-
-.reminders__day-wday {
-  color: #333;
-  font-size: 2rem;
-  font-weight: 100;
-  line-height: 2rem;
-}
-
-.reminders__list {
-  flex-grow: 1;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-}
-
-.reminders__item {
-  display: flex;
-  flex-direction: row;
-  margin: 0 0 3rem;
-}
-
-.reminders__item-time {
-  position: sticky;
-  height: 2rem;
-  margin: 1rem 1rem 0 0;
-  text-align: center;
-  color: #333;
-  font-size: 2rem;
-  font-weight: 200;
-  line-height: 2rem;
-  white-space: nowrap;
-}
-
-.reminders__item-content {
-  flex-grow: 1;
-  background: #8b0000;
-}
-
-.reminders__item-recipient {
-  margin: 0;
-  padding: 1rem;
-  color: #fff;
-  font-size: 1.8rem;
-  font-weight: 700;
-  line-height: 1.8rem;
-}
-
-.reminders__item-text {
-  position: relative;
-  margin: 0.1rem;
-  padding: 1rem;
-  color: #555;
-  background: #fff;
-  font-size: 1.8rem;
-  font-weight: 300;
-  display: flex;
-  align-items: center;
-}
-
-/* Capitalise the first letter of reminder actions. */
-.reminders__item-recipient::first-letter,
-.reminders__item-text > span::first-letter {
-  text-transform: capitalize;
-}
-
-.reminders__item-content.red {
-  background: #8c0000;
-}
-
-.reminders__item-content.salmon {
-  background: #e9967a;
-}
-
-.reminders__item-content.goldenrod {
-  background: #b8860b;
-}
-
-.reminders__item-content.orange {
-  background: #ff8c00;
-}
-
-.reminders__item-content.green {
-  background: #006400;
-}
-
-.reminders__item-content.cyan {
-  background: #008b8b;
-}
-
-.reminders__item-content.blue {
-  background: #00008c;
-}
-
-.reminders__item-content.violet {
-  background: #8c008c;
-}
-
-.reminders__item-content.slategrey {
-  background: #2f4f4f;
-}
-
-.reminders__item-content.grey {
-  background: #a9a9a9;
-}
-
-.reminders__item-text span {
-  flex-grow: 1;
-}
-
-.reminders__button {
-  width: 2rem;
-  min-width: 2rem;
-  height: 2rem;
-  margin-left: 0.6rem;
-  border: none;
-  outline: none;
-  font-size: 0;
-  background: white center 2rem/2rem;
-}
-
-.reminders__delete {
-  background-image: url('./icons/delete.svg');
-}
-
-.reminders__edit {
-  background-image: url('./icons/edit.svg');
 }
 
 /* Small devices (landscape phones, 34em and up) */
 @media (min-width: 34em) {
-  .reminders {
+  .Reminders {
     margin: 0 auto;
-    padding: 2rem 2rem 0;
+    padding: 0 2rem 0;
   }
 }
 
 /* Medium devices (tablets, 48em and up) */
 @media (min-width: 48em) {
-  .reminders {
+  .Reminders {
     margin: 0 auto;
-    padding: 3rem 3rem 0;
+    padding: 0 3rem 0;
   }
 }
 
 /* Large devices (desktops, 62em and up) */
 @media (min-width: 62em) {
-  .reminders {
+  .Reminders {
     max-width: 72rem;
     margin: 0 auto;
-    padding: 5rem 5rem 0;
+    padding: 0 5rem 0;
   }
 }
 
 /* Extra large devices (large desktops, 75em and up) */
 @media (min-width: 75em) {
-  .reminders {
+  .Reminders {
     max-width: 72rem;
     margin: 0 auto;
-    padding: 5rem 5rem 0;
+    padding: 0 5rem 0;
   }
 }

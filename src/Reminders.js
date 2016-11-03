@@ -237,7 +237,7 @@ class Reminders extends Component {
   // @todo Add a different view when there's no reminders:
   render() {
     return (
-      <section className="reminders">
+      <section className="Reminders">
         <Toaster ref={(t) => this.toaster = t}/>
         <div className="menu">
           <OverflowMenu server={this.server}

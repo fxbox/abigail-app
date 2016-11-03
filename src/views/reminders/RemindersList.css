@@ -1,0 +1,80 @@
+.RemindersList {
+  margin-top: 4rem;
+}
+
+.reminders__month {
+  position: sticky;
+  z-index: 1;
+  top: 0;
+  margin: 0 0 2rem;
+  padding: 1rem 0 1rem 0;
+  color: #6f45c9;
+  background: #fff;
+  font-size: 5rem;
+  line-height: 3rem;
+  font-weight: 200;
+}
+
+.reminders__day {
+  display: flex;
+  flex-direction: row;
+}
+
+.reminders__day-date {
+  position: sticky;
+  top: 5rem;
+  max-height: 9rem;
+  margin: 0.5rem 1rem 0 0;
+  padding: 0;
+  text-align: center;
+  background: #fff;
+}
+
+.reminders__day-mday {
+  color: #333;
+  font-size: 4rem;
+  font-weight: 100;
+  line-height: 4rem;
+}
+
+.reminders__day-wday {
+  color: #333;
+  font-size: 2rem;
+  font-weight: 100;
+  line-height: 2rem;
+}
+
+.reminders__list {
+  flex-grow: 1;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* Small devices (landscape phones, 34em and up) */
+@media (min-width: 34em) {
+  .RemindersList {
+    margin-top: 1rem;
+  }
+}
+
+/* Medium devices (tablets, 48em and up) */
+@media (min-width: 48em) {
+  .RemindersList {
+    margin-top: 1rem;
+  }
+}
+
+/* Large devices (desktops, 62em and up) */
+@media (min-width: 62em) {
+  .RemindersList {
+    margin-top: 1rem;
+  }
+}
+
+/* Extra large devices (large desktops, 75em and up) */
+@media (min-width: 75em) {
+  .RemindersList {
+    margin-top: 1rem;
+  }
+}

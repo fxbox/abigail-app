@@ -4,6 +4,8 @@ import moment from 'moment';
 
 import ReminderItem from './ReminderItem';
 
+import './RemindersList.css';
+
 class RemindersList extends Component {
   constructor(props) {
     super(props);
@@ -109,7 +111,7 @@ class RemindersList extends Component {
     });
 
     return (
-      <div>
+      <div className="RemindersList">
         {remindersNode}
       </div>
     );

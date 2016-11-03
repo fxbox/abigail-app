@@ -1,0 +1,112 @@
+.ReminderItem {
+  display: flex;
+  flex-direction: row;
+  margin: 0 0 3rem;
+}
+
+.reminders__item-time {
+  position: sticky;
+  height: 2rem;
+  margin: 1rem 1rem 0 0;
+  text-align: center;
+  color: #333;
+  font-size: 2rem;
+  font-weight: 200;
+  line-height: 2rem;
+  white-space: nowrap;
+}
+
+.reminders__item-content {
+  flex-grow: 1;
+  background: #8b0000;
+}
+
+.reminders__item-recipient {
+  margin: 0;
+  padding: 1rem;
+  color: #fff;
+  font-size: 1.8rem;
+  font-weight: 700;
+  line-height: 1.8rem;
+}
+
+.reminders__item-text {
+  position: relative;
+  margin: 0.1rem;
+  padding: 1rem;
+  color: #555;
+  background: #fff;
+  font-size: 1.8rem;
+  font-weight: 300;
+  display: flex;
+  align-items: center;
+}
+
+/* Capitalise the first letter of reminder actions. */
+.reminders__item-recipient::first-letter,
+.reminders__item-text > span::first-letter {
+  text-transform: capitalize;
+}
+
+.reminders__item-content.red {
+  background: #8c0000;
+}
+
+.reminders__item-content.salmon {
+  background: #e9967a;
+}
+
+.reminders__item-content.goldenrod {
+  background: #b8860b;
+}
+
+.reminders__item-content.orange {
+  background: #ff8c00;
+}
+
+.reminders__item-content.green {
+  background: #006400;
+}
+
+.reminders__item-content.cyan {
+  background: #008b8b;
+}
+
+.reminders__item-content.blue {
+  background: #00008c;
+}
+
+.reminders__item-content.violet {
+  background: #8c008c;
+}
+
+.reminders__item-content.slategrey {
+  background: #2f4f4f;
+}
+
+.reminders__item-content.grey {
+  background: #a9a9a9;
+}
+
+.reminders__item-text span {
+  flex-grow: 1;
+}
+
+.reminders__button {
+  width: 2rem;
+  min-width: 2rem;
+  height: 2rem;
+  margin-left: 0.6rem;
+  border: none;
+  outline: none;
+  font-size: 0;
+  background: white center 2rem/2rem;
+}
+
+.reminders__delete {
+  background-image: url('../../icons/delete.svg');
+}
+
+.reminders__edit {
+  background-image: url('../../icons/edit.svg');
+}
